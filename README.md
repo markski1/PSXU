@@ -14,9 +14,9 @@ If this is all you seek and no more, PSXU might be what you seek.
 
 ### Part 1: Set up the script on your server.
 
-1. Download psxu.php
-2. At the top of the file, fill in the values for $url, $secret_key and $naming. They all have helpful comments.
-3. Save the file, and optionally, rename it to something random to avoid people trying to poke at it.
+1. Download psxu.php and config.php
+2. Fill in the values in config.php, they all have helpful comments.
+3. Optionally, rename psxu.php to something random to avoid people trying to poke at it.
 4. Upload the file to your webserver. Keep in mind files will be uploaded to the same directory as the file is.
 
 ### Part 2: Set up Sharex
