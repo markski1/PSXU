@@ -1,9 +1,12 @@
 <?php
 
 /*
- / PSXU v0.2 by Markski
+ / PSXU v0.3 by Markski
+ / immarkski@proton.me | markski.ar
  /
- / immarkski@proton.me | mrks.cf | github.com/markski1 
+ / Thanks to:
+ /
+ / NaokiStark - Extension restrictions and config, syntax improvements
 */
 
 require_once "config.php";
