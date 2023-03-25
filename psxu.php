@@ -1,15 +1,15 @@
 <?php
 
 /*
- / PSXU v0.3 by Markski
- / immarkski@proton.me | markski.ar
+ / PSXU v0.4 by Markski
+ / me@markski.ar | markski.ar
  /
  / Thanks to:
  /
  / NaokiStark - Extension restrictions and config, syntax improvements
 */
 
-require_once "config.php";
+require_once "psxu_config.php";
 
 if (empty($_FILES) && empty($_POST)) {
 	exit("Error: No file received. Check your sharex settings, or uploaded file might be larger than allowed by php.ini");
@@ -25,14 +25,31 @@ $ext = end((explode(".", $_FILES["fileupload"]["name"])));
 
 // Don't allow listed extensions to upload
 if (in_array(strtolower($ext), $restricted_extensions)) {
-	exit("Error: file extension not allowed");
+	exit("Error: file extension not allowed.");
+}
+
+if ($verify_header_prefixes) {
+	$type = mime_content_type($_FILES['fileupload']['tmp_name']);
+	$allowed = false;
+	foreach ($allowed_headers as $header) {
+		if (str_contains($type, $header)) {
+			$allowed = true;
+			break;
+		}
+	}
+	if (!$allowed) {
+		exit("Error: File's MIME header not in allowed list.");
+	}
 }
 
 if ($randlen < 2) {
-	exit("Error: randlen cannot be less than 3");
+	exit("Error: \$randlen cannot be less than 3");
 }
 while (true) {
-	$filename = "/" . RandomString($randlen) . "." . $ext;
+	if ($directory != "") {
+		$directory .= "/";
+	}
+	$filename = "/" . $directory . RandomString($randlen) . "." . $ext;
 	if (!file_exists(getcwd() . $filename)) {
 		break;
 	}
