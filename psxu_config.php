@@ -2,16 +2,17 @@
 
 // $url will be the url where this runs.
 // No / at the end.
-$url = "https://files.example.com";
+$url = "https://example.com";
 
 // if files should go in a subdirectory, enter it's name below.
+// otherwise, leave empty ($directory = "")
 // make sure the directory exists!
 $directory = "file";
 
 // $randlen will be the amount of random characters to generate for a file's name.
 $randlen = 4;
 
-// with all the above settings default, files would be available as "https://files.example.com/file/asdf.png"
+// with all settings left default, files would be available as "https://example.com/file/asdf.png"
 
 
 
@@ -23,7 +24,7 @@ $secret_key = "change this with a random string";
 
 
 
-// $restricted_extensions resticts files (default: php | exe | sh)
+// $restricted_extensions will not allow files with these extensions (default: php | exe | sh)
 $restricted_extensions = ['php', 'exe', 'sh'];
 
 // if set to 'true' (default), will verify the MIME headers of the uploaded file.
